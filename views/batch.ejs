@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Batch Details</title>
+</head>
+<body>
+    <h1>Batch Details</h1>
+    <p><strong>Batch Number:</strong> <%= batch.batchNumber %></p>
+    <p><strong>Total Tray Count:</strong> <%= batch.totalTrayCount %></p>
+    <p><strong>Current Row:</strong> <%= batch.currentRow %></p>
+    <p><strong>Rooting Progress:</strong> <%= batch.rootingProgress %></p>
+    <p><strong>Status:</strong> <%= batch.status %></p>
+
+    <h2>Photos</h2>
+    <% if (batch.photos.length > 0) { %>
+        <ul>
+            <% batch.photos.forEach(photo => { %>
+                <li><img src="<%= photo %>" alt="Photo" width="200"></li>
+            <% }); %>
+        </ul>
+    <% } else { %>
+        <p>No photos available</p>
+    <% } %>
+
+    <h2>Logs</h2>
+    <% if (batch.logs.length > 0) { %>
+        <ul>
+            <% batch.logs.forEach(log => { %>
+                <li>
+                    <strong>Type:</strong> <%= log.type %>, 
+                    <strong>Details:</strong> <%= log.details %>, 
+                    <strong>Count:</strong> <%= log.count %>, 
+                    <strong>Timestamp:</strong> <%= new Date(log.timestamp).toLocaleString() %>
+                </li>
+            <% }); %>
+        </ul>
+    <% } else { %>
+        <p>No logs available</p>
+    <% } %>
+
+    <a href="/">Back to Batch Selector</a>
+</body>
+</html>

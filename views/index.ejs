@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Batch Selector</title>
+</head>
+<body>
+    <h1>Select a Batch</h1>
+    <form action="/batch" method="GET">
+        <label for="batch">Select a Batch Number:</label>
+        <select name="batchNumber" id="batch" required>
+            <option value="" disabled selected>Select a Batch</option>
+            <% batches.forEach(batch => { %>
+                <option value="<%= batch.batchNumber %>"><%= batch.batchNumber %></option>
+            <% }); %>
+        </select>
+        <button type="submit">View Batch</button>
+    </form>
+</body>
+</html>
